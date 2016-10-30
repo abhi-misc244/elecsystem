@@ -1,0 +1,34 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+ScreenManagement:
+    transition: FadeTransition()
+    MainScreen:
+    AnotherScreen:
+<MainScreen>:
+    name: "drawing_screen"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint: 0.5,0.5
+            text: "Main Screen"
+            pos_hint: {"left":1, "top":1}
+
+        Button:
+            on_release: app.root.current = "calculating_screen"
+            text: "To Calculation Screen"
+            size_hint: 0.2,0.1
+            pos_hint: {"right":1, "top":1}
+
+<AnotherScreen>:
+    name: "calculating_screen"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint: 0.5,0.5
+            text: "Calculation Screen"
+            pos_hint: {"left":0.5, "top":1}
+        Button:
+            on_release: app.root.current = "drawing_screen"
+            text: "Back Home"
+            size_hint: 0.2,0.1
+            pos_hint: {"right":1, "top":1}
