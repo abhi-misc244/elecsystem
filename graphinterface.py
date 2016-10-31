@@ -34,7 +34,7 @@ class GraphInterface(Widget):
         global node_matrix
 
         '''Creating a GraphNode Class.'''
-        node = GraphNode(pos = (100,100))
+        node = GraphNode(pos = (400,400))
 
         '''Creating a Node Matrix. Will use this matrix in APP Class for future calculations'''
         node_matrix.append(node)

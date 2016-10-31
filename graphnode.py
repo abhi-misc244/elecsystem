@@ -22,7 +22,7 @@ class GraphNode(Widget):
         different position. '''
         with self.canvas:
             Color(1,1,1)
-            self.object = Ellipse(pos=(20,20))
+            self.object = Ellipse(pos=(400,400))
 
         '''Creating a label for the node represented by ellipse. Inital text will be New Node.
         Once its dragged from the original position, its name changes based on when its created'''
