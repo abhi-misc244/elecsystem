@@ -63,23 +63,22 @@ class AnotherScreen(Screen):
 class ScreenManagement(ScreenManager):
     pass
 
-def updategraph(object):
+''''def updategraph(object):
     print '-------------'
     presentation.screens[1].b = presentation.screens[0].mat
-
+''''
 presentation = ScreenManager(transition=FadeTransition())
 drawing_screen = MainScreen(name='drawing_screen')
 calculating_screen = AnotherScreen(name = 'calculating_screen')
 presentation.add_widget(drawing_screen)
 presentation.add_widget(calculating_screen)
-print presentation.screens[0].mat
+
+''''print presentation.screens[0].mat
 print presentation.screens[1].b
 presentation.screens[0].bind(mat = updategraph)
-
-
 print presentation.screens[0].mat
 print presentation.screens[1].b
-
+''''
 
 '''List all variable shared bewteen screen here.
 Create ObjectProperty instances in both screens.
