@@ -98,9 +98,6 @@ class GraphNode(Widget):
             touch.grab(self)
             #print 'grabed item'
 
-
-
-
     def on_touch_move(self, touch):
         '''For dragging the node to new position. Grab is a kivy function'''
         if touch.grab_current is self:
