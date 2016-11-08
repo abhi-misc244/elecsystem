@@ -1,0 +1,24 @@
+<MainScreen>
+    BoxLayout:
+        id: box
+        orientation: 'vertical'
+        Label:
+            id: screen_name_label
+            text: 'Drawing Screen'
+        
+        BoxLayout:
+            id: box2
+            orientation: 'horizontal'
+            Button:
+                id: to_calcScreen_btn
+                text: 'To Calculation Screen'
+                size_hint: .2,.2
+                on_press: root.manager.current = 'calculating_screen'
+            Button:
+                id: node_button
+                text: 'Create Node'
+                size_hint: .2,.2
+            Button:
+                id: edge_button
+                text: 'Create Edge'
+                size_hint: .2,.2

@@ -11,6 +11,7 @@ from kivy.graphics import Color, Ellipse, Line
 from kivy.clock import Clock
 from graphtheory import Graph
 from functools import partial
+from tabbedview import CustomTab
 
 class GraphNode(Widget):
     '''The Node creating Class'''
@@ -33,7 +34,7 @@ class GraphNode(Widget):
 
 
     def save_settings(self, instance):
-        self.ids.node_label.text = self.textinput.text
+        
         self.popup.dismiss()
 
 
@@ -42,16 +43,14 @@ class GraphNode(Widget):
             print 'triple tap happended'
             box = BoxLayout(orientation='vertical')
 
-            sub_box1 = BoxLayout(orientation='horizontal')
-            sub_box1.add_widget(Label(text='Name'))
-            self.textinput = TextInput(text = self.text, multiline = False)
-            sub_box1.add_widget(self.textinput)
+            tab_view = CustomTab()
+            box.add_widget(tab_view)
 
-            box.add_widget(sub_box1)
 
-            save_settings_b = Button(text = 'Save')
+
+            save_settings_b = Button(text = 'Save', size_hint=(.2,.2))
             box.add_widget(save_settings_b)
-            self.popup = Popup(title='Settings', content=box, size_hint=(.3,.3), auto_dismiss=False)
+            self.popup = Popup(title='Settings', content=box, size_hint=(.8,.8), auto_dismiss=False)
             self.popup.open()
             save_settings_b.bind(on_press=self.save_settings)
 

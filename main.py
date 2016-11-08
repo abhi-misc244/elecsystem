@@ -13,40 +13,20 @@ from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, NumericProperty, ReferenceListProperty, ObjectProperty
 
+# All kivy files to be loaded are referenced here
 Builder.load_file('Graph.kv')
+Builder.load_file('Screens.kv')
+Builder.load_file('tabbedview.kv')
 
 class MainScreen(Screen):
+
     def __init__(self, **kwargs):
         super(MainScreen, self).__init__(**kwargs)
-        box = BoxLayout(orientation='vertical')
-        label = Label(text='Drawing Screen')
-        box.add_widget(label)
         self.game = GraphInterface()
-        box.add_widget(self.game)
+        self.ids.box.add_widget(self.game, index=1)
+        self.ids.node_button.bind(on_press=self.game.createNode)
+        self.ids.edge_button.bind(on_press=self.game.createEdge)
 
-        box2 = BoxLayout(orientation='horizontal')
-
-        button = Button (text = 'To Calculating Screen', size_hint=(.2,.2))
-        button.bind(on_press=self.switch_screen)
-        box2.add_widget(button)
-
-        node_button = Button (text = 'Create Node', size_hint=(.2,.2))
-        node_button.bind(on_press=self.game.createNode)
-        box2.add_widget(node_button)
-
-        edge_button = Button (text = 'Create Edge', size_hint=(.2,.2))
-        edge_button.bind(on_press=self.game.createEdge)
-        box2.add_widget(edge_button)
-
-        box.add_widget(box2)
-        self.add_widget(box)
-
-
-    def switch_screen(self, instance):
-        global mat
-        self.parent.current = 'calculating_screen'
-        mat = self.game.graph
-        print 'this is mat---->>>', mat
 
 class AnotherScreen(Screen):
     def __init__(self, **kwargs):
