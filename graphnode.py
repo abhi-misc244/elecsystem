@@ -6,7 +6,7 @@ from kivy.uix.label import Label
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty
+from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty, StringProperty
 from kivy.graphics import Color, Ellipse, Line
 from kivy.clock import Clock
 from graphtheory import Graph
@@ -16,6 +16,7 @@ from tabbedview import CustomTab
 class GraphNode(Widget):
     '''The Node creating Class'''
     r = NumericProperty(1)
+    text = StringProperty('New Node')
 
     def __init__(self, **kwargs):
         super(GraphNode, self).__init__(**kwargs)
@@ -33,8 +34,10 @@ class GraphNode(Widget):
 
 
 
+
     def save_settings(self, instance):
-        
+        self.ids.node_label.text = self.tab_view.ids.node_name.text
+        self.text = self.tab_view.ids.node_name.text        
         self.popup.dismiss()
 
 
@@ -43,8 +46,9 @@ class GraphNode(Widget):
             print 'triple tap happended'
             box = BoxLayout(orientation='vertical')
 
-            tab_view = CustomTab()
-            box.add_widget(tab_view)
+            self.tab_view = CustomTab()
+
+            box.add_widget(self.tab_view)
 
 
 
