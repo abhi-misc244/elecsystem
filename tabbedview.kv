@@ -1,4 +1,5 @@
 <CustomTab>:
+    dropdown: dropdown.__self__
     size_hint: .5, .5
     pos_hint: {'center_x': .5, 'center_y': .5}
     do_default_tab: False
@@ -30,22 +31,31 @@
                 DropDown:
                     id: dropdown
                     on_select: btn.text = '{}'.format(args[1])
-                    on_parent: self.dismiss()
+                    on_parent: dropdown.dismiss()
                     Button:
                         text: 'Load'
+                        id: load_btn
                         size_hint_y: None
                         height: '48dp'
                         on_release: dropdown.select('Load')
                     Button:
                         text: 'DB'
+                        id: db_btn
                         size_hint_y: None
                         height: '48dp'
                         on_release: dropdown.select('DB')
                     Button:
                         text: 'Generator'
+                        id: genrator_btn
                         size_hint_y: None
                         height: '48dp'
                         on_release: dropdown.select('Generator')
+                    Button:
+                        text: 'Grid'
+                        id: grid_btn
+                        size_hint_y: None
+                        height: '48dp'
+                        on_release: dropdown.select('Grid')
 
 
     TabbedPanelItem:
