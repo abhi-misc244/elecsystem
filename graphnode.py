@@ -84,13 +84,13 @@ class GraphNode(Widget):
                 with self.canvas:
                     self.canvas.clear()
                     Color(1,0,1)
-                    self.object = Ellipse(pos=(self.pos))
+                    self.object = Ellipse(pos=(self.center))
                     self.update_object()
             elif not self.selected:
                 with self.canvas:
                     self.canvas.clear()
                     Color(1,1,1)
-                    self.object = Ellipse(pos=(self.pos))
+                    self.object = Ellipse(pos=(self.center))
                     self.update_object()
 
         elif self.collide_point(*touch.pos):
