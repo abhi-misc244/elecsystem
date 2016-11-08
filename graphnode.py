@@ -37,7 +37,8 @@ class GraphNode(Widget):
 
     def save_settings(self, instance):
         self.ids.node_label.text = self.tab_view.ids.node_name.text
-        self.text = self.tab_view.ids.node_name.text        
+        self.text = self.tab_view.ids.node_name.text
+        self.ids.node_type.text = self.tab_view.ids.btn.text
         self.popup.dismiss()
 
 
@@ -49,8 +50,6 @@ class GraphNode(Widget):
             self.tab_view = CustomTab()
 
             box.add_widget(self.tab_view)
-
-
 
             save_settings_b = Button(text = 'Save', size_hint=(.2,.2))
             box.add_widget(save_settings_b)
