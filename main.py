@@ -16,7 +16,7 @@ from kivy.properties import StringProperty, NumericProperty, ReferenceListProper
 # All kivy files to be loaded are referenced here
 Builder.load_file('Graph.kv')
 Builder.load_file('Screens.kv')
-Builder.load_file('tabbed.kv')
+Builder.load_file('tabbedview.kv')
 
 class MainScreen(Screen):
 
