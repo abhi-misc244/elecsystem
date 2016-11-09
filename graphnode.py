@@ -16,6 +16,7 @@ from tabbedview import CustomTab
 class GraphNode(Widget):
     '''The Node creating Class'''
     r = NumericProperty(1)
+    node_shape = StringProperty('rectangle.png')
     text = StringProperty('New Node')
 
     def __init__(self, **kwargs):
@@ -37,8 +38,16 @@ class GraphNode(Widget):
 
     def save_settings(self, instance):
         self.ids.node_label.text = self.tab_view.ids.node_name.text
-        self.text = self.tab_view.ids.node_name.text
-        self.ids.node_type.text = self.tab_view.ids.btn.text
+        if self.tab_view.ids.btn.text=='DB':
+            self.node_shape = 'db.png'
+        elif self.tab_view.ids.btn.text=='Generator':
+            self.node_shape = 'generator.png'
+        elif self.tab_view.ids.btn.text=='Grid':
+            self.node_shape = 'grid.png'
+        elif self.tab_view.ids.btn.text=='Load':
+            self.node_shape = 'load.png'
+
+        self.text = self.tab_view.ids.node_name.text        
         self.popup.dismiss()
 
 
