@@ -21,20 +21,7 @@ class GraphNode(Widget):
 
     def __init__(self, **kwargs):
         super(GraphNode, self).__init__(**kwargs)
-
-        '''This creates a circle at specified position initally. The node can then be dragged to
-        different position. '''
-
-        '''Creating a label for the node represented by ellipse. Inital text will be New Node.
-        Once its dragged from the original position, its name changes based on when its created'''
-
-        '''Any change to the position of the node will trigger update_object function'''
-
-        '''This variable is used to get connection points of the edges'''
         self.selected = 0
-
-
-
 
     def save_settings(self, instance):
         self.ids.node_label.text = self.tab_view.ids.node_name.text
@@ -47,13 +34,12 @@ class GraphNode(Widget):
         elif self.tab_view.ids.btn.text=='Load':
             self.node_shape = 'load.png'
 
-        self.text = self.tab_view.ids.node_name.text        
+        self.text = self.tab_view.ids.node_name.text
         self.popup.dismiss()
-
 
     def on_touch_down(self,touch):
         if self.collide_point(*touch.pos) and touch.is_triple_tap:
-            print 'triple tap happended'
+            #print 'triple tap happended'
             box = BoxLayout(orientation='vertical')
 
             self.tab_view = CustomTab()
@@ -65,8 +51,6 @@ class GraphNode(Widget):
             self.popup = Popup(title='Settings', content=box, size_hint=(.8,.8), auto_dismiss=False)
             self.popup.open()
             save_settings_b.bind(on_press=self.save_settings)
-
-
 
         elif self.collide_point(*touch.pos) and touch.is_double_tap:
             '''Colour changing effect when a node is selected'''
