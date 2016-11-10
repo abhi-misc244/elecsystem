@@ -6,19 +6,25 @@ from kivy.uix.label import Label
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty
+from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty, ListProperty, StringProperty
 from kivy.graphics import Color, Ellipse, Line
 from kivy.clock import Clock
 from graphtheory import Graph
 from functools import partial
+from tabbedview import CustomTab
 
 class GraphEdge(Widget):
     '''The Edge creating class. This needs two nodes as inputs.'''
+    points = ListProperty(None)
+    edge_x = NumericProperty(50)
+    edge_y = NumericProperty(50)
+    edge_name = StringProperty('TBC')
 
     def __init__(self,node1, node2, **kwargs):
         super(GraphEdge, self).__init__(**kwargs)
         self.node1 = node1
         self.node2 = node2
+
 
         '''This is the name of the edge'''
         self.text = 'Edge--'+node1.text + '-' + node2.text
@@ -26,10 +32,9 @@ class GraphEdge(Widget):
         '''The points list of the edge.'''
         self.points = list(node1.center) + list(node2.center)
 
-        '''Drawing a line between the two nodes given with class creation'''
-        with self.canvas:
-            Color(1,1,1)
-            self.object = Line(points=self.points, width=3)
+        self.edge_x = (self.node1.x + self.node2.x)/2
+        self.edge_y = (self.node1.y + self.node2.y)/2
+
 
         '''Whenever anoy of the nodes position changes, this triggers update_object function'''
         self.node1.bind(pos=self.update_object)
@@ -40,10 +45,22 @@ class GraphEdge(Widget):
 
         '''Reassign the values of points to match the new position of node'''
         self.points = list(self.node1.center) + list(self.node2.center)
+        self.edge_x = (self.node1.x + self.node2.x)/2
+        self.edge_y = (self.node1.y + self.node2.y)/2
 
-        '''Clear the canvas. Redraw the line between unmoved node and moved node'''
-        with self.canvas:
-            self.canvas.clear()
-            Color(1,1,1)
-            self.object= Line(points=self.points, width=3)
+    def on_touch_down(self,touch):
+        if self.collide_point(*touch.pos) and touch.is_triple_tap:
+            box = BoxLayout(orientation='vertical')
+            self.tab_view = CustomTab()
+            box.add_widget(self.tab_view)
+            save_settings_b = Button(text = 'Save', size_hint=(.2,.2))
+            box.add_widget(save_settings_b)
+            self.popup = Popup(title='Settings', content=box, size_hint=(.8,.8), auto_dismiss=False)
+            self.popup.open()
+            save_settings_b.bind(on_press=self.save_settings)
+
+    def save_settings(self, instance):
+        self.edge_name = self.tab_view.ids.node_name.text
+        self.popup.dismiss()
+
     pass
