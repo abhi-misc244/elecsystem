@@ -12,6 +12,7 @@ from kivy.clock import Clock
 from graphtheory import Graph
 from functools import partial
 from tabbedview import CustomTab
+from tabbedview import EdgeTab
 
 class GraphEdge(Widget):
     '''The Edge creating class. This needs two nodes as inputs.'''
@@ -51,7 +52,7 @@ class GraphEdge(Widget):
     def on_touch_down(self,touch):
         if self.collide_point(*touch.pos) and touch.is_triple_tap:
             box = BoxLayout(orientation='vertical')
-            self.tab_view = CustomTab()
+            self.tab_view = EdgeTab()
             box.add_widget(self.tab_view)
             save_settings_b = Button(text = 'Save', size_hint=(.2,.2))
             box.add_widget(save_settings_b)
@@ -60,7 +61,7 @@ class GraphEdge(Widget):
             save_settings_b.bind(on_press=self.save_settings)
 
     def save_settings(self, instance):
-        self.edge_name = self.tab_view.ids.node_name.text
+        self.edge_name = self.tab_view.ids.edge_name.text
         self.popup.dismiss()
 
     pass

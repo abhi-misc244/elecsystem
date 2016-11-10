@@ -78,3 +78,78 @@
                 TextInput:
                     id: nodeimp_ti
                     size_hint_y: .5
+<EdgeTab>:
+    dd_insulation: dd_insulation.__self__
+    size_hint: .5, .5
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    do_default_tab: False
+
+    TabbedPanelItem:
+        text: 'Naming tab'
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .6
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Enter Node Name Here'
+                    size_hint_y: 1
+                TextInput:
+                    size_hint_y: 1
+                    id: edge_name
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Select Insulation Type'
+                    size_hint_y: 1
+                Button:
+                    id: btn_insulation
+                    text: 'Press'
+                    on_release: dd_insulation.open(self)
+                    size_hint_y: 1
+                    height: '48dp'
+                DropDown:
+                    id: dd_insulation
+                    on_select: btn_insulation.text = '{}'.format(args[1])
+                    on_parent: dd_insulation.dismiss()
+                    Button:
+                        text: 'PVC'
+                        id: pvc_btn
+                        size_hint_y: None
+                        height: '48dp'
+                        on_release: dd_insulation.select('PVC')
+                    Button:
+                        text: 'XLPE'
+                        id: xlpe_btn
+                        size_hint_y: None
+                        height: '48dp'
+                        on_release: dd_insulation.select('XLPE')
+                    Button:
+                        text: 'Bare'
+                        id: bare_btn
+                        size_hint_y: None
+                        height: '48dp'
+                        on_release: dd_insulation.select('Bare')
+
+
+
+    TabbedPanelItem:
+        text: 'Size Tab'
+        BoxLayout:
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: btn_insulation.text + ' Size in kW'
+                    size_hint_y: .5
+                TextInput:
+                    id: nodesize_ti
+                    size_hint_y: .5
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Short Circuit impedance'
+                    size_hint_y: .5
+                TextInput:
+                    id: nodeimp_ti
+                    size_hint_y: .5

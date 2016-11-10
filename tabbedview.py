@@ -8,3 +8,6 @@ from kivy.uix.boxlayout import BoxLayout
 
 class CustomTab(TabbedPanel):
     pass
+
+class EdgeTab(TabbedPanel):
+    pass
