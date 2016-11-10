@@ -3,19 +3,14 @@
     canvas:
         Color:
             rgb: (self.r,1,1)
-        Ellipse:
+        Rectangle:
             pos: self.pos
             size: self.size
+            source: self.node_shape
 
     Label:
         id: node_label
         text: "New Node"
-        pos: root.pos
-        font_size: 20
-        color: 1,0,0,1
-    Label:
-        id: node_type
-        text: 'Type TBC'
-        pos: root.x-50, root.y-50
+        pos: root.x, root.y+10
         font_size: 20
         color: 1,0,0,1
