@@ -80,6 +80,7 @@
                     size_hint_y: .5
 <EdgeTab>:
     dd_insulation: dd_insulation.__self__
+    dd_core: dd_core.__self__
     size_hint: .5, .5
     pos_hint: {'center_x': .5, 'center_y': .5}
     do_default_tab: False
@@ -131,7 +132,34 @@
                         height: '48dp'
                         on_release: dd_insulation.select('Bare')
 
-
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Select Core Type'
+                    size_hint_y: 1
+                Button:
+                    id: btn_core
+                    text: 'Press'
+                    on_release: dd_core.open(self)
+                    size_hint_y: 1
+                    height: '48dp'
+                DropDown:
+                    id: dd_core
+                    on_select: btn_core.text = '{}'.format(args[1])
+                    on_parent: dd_core.dismiss()
+                    Button:
+                        text: 'Multi Core'
+                        id: multicore_btn
+                        size_hint_y: None
+                        height: '48dp'
+                        on_release: dd_core.select('Multi Core')
+                    Button:
+                        text: 'Single Core'
+                        id: singlecore_btn
+                        size_hint_y: None
+                        height: '48dp'
+                        on_release: dd_core.select('Single Core')
+                    
 
     TabbedPanelItem:
         text: 'Size Tab'
