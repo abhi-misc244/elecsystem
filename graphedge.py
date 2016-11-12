@@ -13,8 +13,7 @@ from graphtheory import Graph
 from functools import partial
 from tabbedview import CustomTab
 from tabbedview import EdgeTab
-from elecengpy import elementfile as ef
-import re
+
 
 class GraphEdge(Widget):
     '''The Edge creating class. This needs two nodes as inputs.'''
@@ -65,20 +64,8 @@ class GraphEdge(Widget):
 
     def save_settings(self, instance):
         self.edge_name = self.tab_view.ids.edge_name.text
-        cable = ef.cableclass()
-        size = re.findall(r"[-+]?\d*\.\d+|\d+", self.tab_view.ids.btn_size.text)
-        size = size[0]
-        cable.changesize(size)
-        if 'PVC' in (self.tab_view.ids.btn_insulation.text):
-            cable.changeinsulation('pvc')
-        elif 'XLPE' in self.tab_view.ids.btn_insulation.text:
-            cable.changeinsulation('pvc')
-        if 'single' in (self.tab_view.ids.btn_core.text):
-            cable.changecore('single core')
-        elif 'Multi' in self.tab_view.ids.btn_core.text:
-            cable.changecore('multicore')
 
-        self.edge_name = self.edge_name + str(cable.resistance)
+        self.edge_name = self.edge_name + '\n' + str(self.tab_view.resistance)+' Ohms'
 
 
         self.edge_cable = self.tab_view.ids.btn_size.text +  " " +  self.tab_view.ids.btn_core.text + " " + self.tab_view.ids.btn_insulation.text

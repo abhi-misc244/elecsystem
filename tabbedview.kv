@@ -17,6 +17,7 @@
                 TextInput:
                     size_hint_y: 1
                     id: node_name
+
             BoxLayout:
                 orientation: 'horizontal'
                 Label:
@@ -206,7 +207,6 @@
                         height: '20dp'
                         on_release: dd_size.select('500 mm2')
 
-
             BoxLayout:
                 orientation: 'horizontal'
                 Label:
@@ -268,8 +268,14 @@
                         size_hint_y: None
                         height: '48dp'
                         on_release: dd_core.select('Single Core')
-
-
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Cable Resistance\n@100m'
+                    size_hint_y: 1
+                Label:
+                    text: root.resistance
+                    size_hint_y: 1
 
     TabbedPanelItem:
         text: 'Size Tab'
