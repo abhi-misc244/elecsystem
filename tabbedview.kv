@@ -81,6 +81,7 @@
 <EdgeTab>:
     dd_insulation: dd_insulation.__self__
     dd_core: dd_core.__self__
+    dd_size: dd_size.__self__
     size_hint: .5, .5
     pos_hint: {'center_x': .5, 'center_y': .5}
     do_default_tab: False
@@ -98,6 +99,114 @@
                 TextInput:
                     size_hint_y: 1
                     id: edge_name
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Select Cable Size'
+                    size_hint_y: 1
+                Button:
+                    id: btn_size
+                    text: 'Press'
+                    on_release: dd_size.open(self)
+                    size_hint_y: 1
+                    height: '48dp'
+                DropDown:
+                    id: dd_size
+                    on_select: btn_size.text = '{}'.format(args[1])
+                    on_parent: dd_size.dismiss()
+                    Button:
+                        text: '2.5 mm2'
+                        id: size2.5_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('2.5 mm2')
+                    Button:
+                        text: '4 mm2'
+                        id: size4_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('4 mm2')
+                    Button:
+                        text: '6 mm2'
+                        id: size6_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('6 mm2')
+                    Button:
+                        text: '10 mm2'
+                        id: size10_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('10 mm2')
+                    Button:
+                        text: '16 mm2'
+                        id: size16_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('16 mm2')
+                    Button:
+                        text: '25 mm2'
+                        id: size25_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('25 mm2')
+                    Button:
+                        text: '35 mm2'
+                        id: size35_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('35 mm2')
+                    Button:
+                        text: '50 mm2'
+                        id: size50_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('50 mm2')
+                    Button:
+                        text: '70 mm2'
+                        id: size70_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('70 mm2')
+                    Button:
+                        text: '95 mm2'
+                        id: size95_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('95 mm2')
+                    Button:
+                        text: '120 mm2'
+                        id: size120_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('120 mm2')
+                    Button:
+                        text: '150 mm2'
+                        id: size150_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('150 mm2')
+                    Button:
+                        text: '180 mm2'
+                        id: size180_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('180 mm2')
+                    Button:
+                        text: '240 mm2'
+                        id: size240_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('240 mm2')
+                    Button:
+                        text: '500 mm2'
+                        id: size500_btn
+                        size_hint_y: None
+                        height: '20dp'
+                        on_release: dd_size.select('500 mm2')
+
+
             BoxLayout:
                 orientation: 'horizontal'
                 Label:
@@ -159,7 +268,8 @@
                         size_hint_y: None
                         height: '48dp'
                         on_release: dd_core.select('Single Core')
-                    
+
+
 
     TabbedPanelItem:
         text: 'Size Tab'
