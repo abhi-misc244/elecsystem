@@ -20,6 +20,7 @@ class GraphEdge(Widget):
     edge_x = NumericProperty(50)
     edge_y = NumericProperty(50)
     edge_name = StringProperty('TBC')
+    edge_cable = StringProperty('TBC')
 
     def __init__(self,node1, node2, **kwargs):
         super(GraphEdge, self).__init__(**kwargs)
@@ -46,8 +47,8 @@ class GraphEdge(Widget):
 
         '''Reassign the values of points to match the new position of node'''
         self.points = list(self.node1.center) + list(self.node2.center)
-        self.edge_x = (self.node1.x + self.node2.x)/2
-        self.edge_y = (self.node1.y + self.node2.y)/2
+        self.edge_x = (abs(self.node1.x) + abs(self.node2.x))/2
+        self.edge_y = (abs(self.node1.y) + abs(self.node2.y))/2
 
     def on_touch_down(self,touch):
         if self.collide_point(*touch.pos) and touch.is_triple_tap:
@@ -62,6 +63,6 @@ class GraphEdge(Widget):
 
     def save_settings(self, instance):
         self.edge_name = self.tab_view.ids.edge_name.text
+        self.edge_cable = self.tab_view.ids.btn_size.text +  " " +  self.tab_view.ids.btn_core.text + " " + self.tab_view.ids.btn_insulation.text
         self.popup.dismiss()
-
     pass
