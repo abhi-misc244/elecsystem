@@ -10,4 +10,5 @@ class CustomTab(TabbedPanel):
     pass
 
 class EdgeTab(TabbedPanel):
+    
     pass
