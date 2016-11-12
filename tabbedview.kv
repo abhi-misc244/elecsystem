@@ -113,7 +113,7 @@
                     height: '48dp'
                 DropDown:
                     id: dd_size
-                    on_select: btn_size.text = '{}'.format(args[1])
+                    on_select: btn_size.text = '{}'.format(args[1]); root.cable_calcs()
                     on_parent: dd_size.dismiss()
                     Button:
                         text: '2.5 mm2'
@@ -220,7 +220,7 @@
                     height: '48dp'
                 DropDown:
                     id: dd_insulation
-                    on_select: btn_insulation.text = '{}'.format(args[1])
+                    on_select: btn_insulation.text = '{}'.format(args[1]); root.cable_calcs()
                     on_parent: dd_insulation.dismiss()
                     Button:
                         text: 'PVC'
@@ -254,7 +254,7 @@
                     height: '48dp'
                 DropDown:
                     id: dd_core
-                    on_select: btn_core.text = '{}'.format(args[1])
+                    on_select: btn_core.text = '{}'.format(args[1]); root.cable_calcs()
                     on_parent: dd_core.dismiss()
                     Button:
                         text: 'Multi Core'
