@@ -100,6 +100,15 @@
                 TextInput:
                     size_hint_y: 1
                     id: edge_name
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Cable Length (km)'
+                    size_hint_y: 1
+
+                TextInput:
+                    id: cable_length                    
+                    size_hint_y: 1
 
             BoxLayout:
                 orientation: 'horizontal'
@@ -268,10 +277,13 @@
                         size_hint_y: None
                         height: '48dp'
                         on_release: dd_core.select('Single Core')
+
+
+
             BoxLayout:
                 orientation: 'horizontal'
                 Label:
-                    text: 'Cable Resistance\n@100m'
+                    text: 'Cable Resistance'
                     size_hint_y: 1
                 Label:
                     text: root.resistance

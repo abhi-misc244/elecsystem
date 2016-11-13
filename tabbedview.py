@@ -28,6 +28,9 @@ class EdgeTab(TabbedPanel):
             cable.changecore('single core')
         elif 'Multi' in self.ids.btn_core.text:
             cable.changecore('multicore')
+        if self.ids.cable_length.text ==None:
+            cable.changelength('0.1')
+        else:
+            cable.changelength(self.ids.cable_length.text)
         self.resistance = str(cable.resistance)
-
     pass
