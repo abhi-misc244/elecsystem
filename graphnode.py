@@ -41,8 +41,8 @@ class GraphNode(Widget):
         if self.collide_point(*touch.pos) and touch.is_triple_tap:
             #print 'triple tap happended'
             box = BoxLayout(orientation='vertical')
-
-            self.tab_view = CustomTab()
+            if self.tab_view == None:
+                self.tab_view = CustomTab()
 
             box.add_widget(self.tab_view)
 
