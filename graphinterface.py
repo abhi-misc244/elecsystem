@@ -38,13 +38,11 @@ class GraphInterface(Widget):
 
         '''Creating a Node Matrix. Will use this matrix in APP Class for future calculations'''
         node_matrix.append(node)
-
-        '''Setting node variable to None. Probably not required; to be investigated in future'''
-        node = None
+        node.text = 'Button'+ str(len(node_matrix))
 
         '''Adding the Widget to the drawing screen'''
         self.add_widget(node_matrix[-1])
-        node_matrix[-1].text = 'Button'+ str(len(node_matrix))
+        node_matrix[-1].text = node.text
         print node_matrix[-1].text
 
     def createEdge(self, instance):
