@@ -38,12 +38,11 @@ class GraphInterface(Widget):
 
         '''Creating a Node Matrix. Will use this matrix in APP Class for future calculations'''
         node_matrix.append(node)
-        node.text = 'Button'+ str(len(node_matrix))
 
         '''Adding the Widget to the drawing screen'''
         self.add_widget(node_matrix[-1])
-        node_matrix[-1].text = node.text
-        print node_matrix[-1].text
+        #node_matrix[-1].text = node.text
+        #print node_matrix[-1].text
 
     def createEdge(self, instance):
         '''Creating a GraphEdge Class.'''
@@ -53,36 +52,36 @@ class GraphInterface(Widget):
         global edge_matrix
 
 
-        '''Setting initial values of Node1 and Node2 to None. Not sure if required.
-        To be investigated'''
+        '''Setting initial values of Node1 and Node2 to None.'''
         node2 = None
         node1 = None
 
-        '''A for loop to get two nodes that are selected by double clicking. These nodes should
-        have a changed colour in user interface.'''
+        '''A for loop to get two nodes that are selected by double clicking. These nodes should have a changed colour in user interface.'''
         for i in range (0, len(node_matrix)):
             if (node_matrix[i].selected) and (node1 == None):
-                node1 = node_matrix[i]
+                node1 = i
+                #node1 = node_matrix[i]
             if (node_matrix[i].selected) and (node_matrix[i] != node1):
-                node2 = node_matrix[i]
+                node2 = i
+                #node2 = node_matrix[i]
 
         '''Creating a generic edge called 'c'. Addign that generic edge to the main game'''
-        c = GraphEdge(node1, node2)
-        self.add_widget(c)
+        theline = GraphEdge(node_matrix[node1], node_matrix[node2])
+        self.add_widget(theline)
 
         #Future - for integration with graph class
 
-        edge_matrix.append(c)
+        edge_matrix.append(theline)
 
 
-        print node_matrix
-        print 'node matrix length is ----> ', len(node_matrix)
-        print 'edge matrix length is ----> ', len(edge_matrix)
+        #print node_matrix
+        #print 'node matrix length is ----> ', len(node_matrix)
+        #print 'edge matrix length is ----> ', len(edge_matrix)
 
         #c = None
-        '''node1 = None
-        node2 = None'''
 
-        self.graph.add_edge([edge_matrix[-1].node1,edge_matrix[-1].node2])
 
+        self.graph.add_edge([node_matrix[node1], node_matrix[node2]])
+
+        print 'the graph is---->'
         print self.graph

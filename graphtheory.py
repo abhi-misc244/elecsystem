@@ -16,7 +16,7 @@ class Graph(object):
             self.__graph_dict[x].append(x)
         print 'making it blank here'
 
-    
+
     def vertices(self):
         """ returns the vertices of a graph """
         return list(self.__graph_dict.keys())
