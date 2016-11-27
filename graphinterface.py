@@ -66,7 +66,8 @@ class GraphInterface(Widget):
                 #node2 = node_matrix[i]
 
         '''Creating a generic edge called 'c'. Addign that generic edge to the main game'''
-        theline = GraphEdge(node_matrix[node1], node_matrix[node2])
+        edge_list = [node_matrix[node1], node_matrix[node2]]
+        theline = GraphEdge(edge_list)
         self.add_widget(theline)
 
         #Future - for integration with graph class
@@ -81,7 +82,7 @@ class GraphInterface(Widget):
         #c = None
 
 
-        self.graph.add_edge([node_matrix[node1], node_matrix[node2]])
+        self.graph.add_edge(theline)
 
         print 'the graph is---->'
         print self.graph

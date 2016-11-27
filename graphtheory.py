@@ -39,8 +39,11 @@ class Graph(object):
         """ assumes that edge is of type set, tuple or list;
             between two vertices can be multiple edges!
         """
-        edge = set(edge)
-        (vertex1, vertex2) = tuple(edge)
+        #edge = set(edge)
+        #(vertex1, vertex2) = tuple(edge)
+
+        vertex1 = edge.node1
+        vertex2 = edge.node2
 
         if vertex1 in self.__graph_dict:
             self.__graph_dict[vertex1].append(vertex2)

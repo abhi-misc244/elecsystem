@@ -76,3 +76,14 @@ class GraphNode(Widget):
         if touch.grab_current is self:
             #print "ungrabed a button"
             touch.ungrab(self)
+
+    def __hash__(self):
+        return id(self.text)
+
+    '''def __eq__(self, other):
+        return (self.text) == (other.text)
+
+    def __ne__(self, other):
+        # Not strictly necessary, but to avoid having both x==y and x!=y
+        # True at the same time
+        return not(self == other)'''

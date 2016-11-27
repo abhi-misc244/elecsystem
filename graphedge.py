@@ -23,17 +23,17 @@ class GraphEdge(Widget):
     edge_name = StringProperty('TBC')
     edge_cable = StringProperty('TBC')
 
-    def __init__(self,node1, node2, **kwargs):
+    def __init__(self,edge_list, **kwargs):
         super(GraphEdge, self).__init__(**kwargs)
-        self.node1 = node1
-        self.node2 = node2
+        self.node1 = edge_list[0]
+        self.node2 = edge_list[1]
 
 
         '''This is the name of the edge'''
-        self.text = 'Edge--'+node1.text + '-' + node2.text
+        self.text = 'Edge--'+self.node1.text + '-' + self.node2.text
 
         '''The points list of the edge.'''
-        self.points = list(node1.center) + list(node2.center)
+        self.points = list(self.node1.center) + list(self.node2.center)
 
         self.edge_x = (self.node1.x + self.node2.x)/2
         self.edge_y = (self.node1.y + self.node2.y)/2
@@ -66,7 +66,6 @@ class GraphEdge(Widget):
         self.edge_name = self.tab_view.ids.edge_name.text
 
         self.edge_name = self.edge_name + '\n' + str(self.tab_view.resistance)+' Ohms'
-
 
         self.edge_cable = self.tab_view.ids.btn_size.text +  " " +  self.tab_view.ids.btn_core.text + " " + self.tab_view.ids.btn_insulation.text
         self.popup.dismiss()
