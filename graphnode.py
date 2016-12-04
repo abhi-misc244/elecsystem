@@ -18,10 +18,13 @@ class GraphNode(Widget):
     r = NumericProperty(1)
     node_shape = StringProperty('rectangle.png')
     text = StringProperty('New Node')
+    node_id = NumericProperty()
 
     def __init__(self, **kwargs):
         super(GraphNode, self).__init__(**kwargs)
         self.selected = 0
+        print self.node_id
+        print self
 
     def save_settings(self, instance):
         self.ids.node_label.text = self.tab_view.ids.node_name.text
@@ -78,10 +81,10 @@ class GraphNode(Widget):
             touch.ungrab(self)
 
     def __hash__(self):
-        return id(self.text)
+        return id(self.node_id)
 
     '''def __eq__(self, other):
-        return (self.text) == (other.text)
+        return (self.node_id) == (other.node_id)
 
     def __ne__(self, other):
         # Not strictly necessary, but to avoid having both x==y and x!=y

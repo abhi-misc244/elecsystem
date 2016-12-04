@@ -24,6 +24,8 @@ class GraphInterface(Widget):
         global edge_matrix
         edge_matrix = []
 
+        self.total_nodes = 0
+
         #Global variable that tracks all nodes
         global node_matrix
         node_matrix = []
@@ -32,9 +34,10 @@ class GraphInterface(Widget):
 
     def createNode(self, instance):
         global node_matrix
-
+        self.total_nodes = self.total_nodes + 1
+        var = self.total_nodes
         '''Creating a GraphNode Class.'''
-        node = GraphNode(pos = (400,400))
+        node = GraphNode(pos = (400,400), node_id = var)
 
         '''Creating a Node Matrix. Will use this matrix in APP Class for future calculations'''
         node_matrix.append(node)
